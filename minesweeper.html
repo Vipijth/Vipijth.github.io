@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Minesweeper Game</title>
+    <link rel="stylesheet" href="minesweeper.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="center-container" id="player_box">
+      <div class="center-container game-title">
+        <center>
+          <h1>
+            MINESWEEPER
+            <li class="fa fa-bomb bomb-icon"></li>
+          </h1>
+        </center>
+      </div>
+      <div class="center-container player-name-box">
+        <input type="text" placeholder="Player Name..." id="player_input" />
+        <button id="go_button">GO <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="center-container" id="start_box">
+      <div class="center-container game-title">
+        <center>
+          <h1>
+            MINESWEEPER
+            <li class="fa fa-bomb bomb-icon"></li>
+          </h1>
+        </center>
+      </div>
+      <div class="center-container menu">
+        <div class="sub-menu">
+          Player:<span id="welcome_player_name"></span>
+          <p>
+            <li class="fa fa-flag"></li>
+            : <span class="flag-count count">10</span>
+          </p>
+          <p>
+            <li class="fa fa-bomb"></li>
+            : <span class="bomb-count count">10</span>
+          </p>
+          <p>Won: <span class="won-count count">0</span></p>
+          <p>Failed: <span class="fail-count count">0</span></p>
+        </div>
+        <div style="float: left">
+          <button id="start"><i class="fa fa-play-circle"></i></button>
+        </div>
+        <div class="sub-menu">
+          <select id="difficulty" onchange="gameMode(this.value)">
+            <option value="10">Easy</option>
+            <option value="20">Medium</option>
+            <option value="30">Hard</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="game_box">
+      <div class="info">
+        <h2>Minesweeper</h2>
+        <p>
+          The game is set up in a n by n grid composed of squares. Behind some
+          of the squares, there are mines. Every time you click a square it
+          reveals it, either showing the mine (which is a loss and ends the
+          game) or showing the number of mines around the square in a 3x3 grid
+          radius. If there are no mines around the selected square, it reveal
+          all the squares around it. If there is an empty square that was
+          revealed, it will repeat the last step around its location instead of
+          the square the user clicked on. This process repeats until there is no
+          more connected empty squares.
+        </p>
+
+        <button
+          class="restart-button"
+          id="restart "
+          onclick=" location.reload()"
+        >
+          Restart
+        </button>
+
+        <div class="sub-menu">Player:<span id="game_player_name"></span></div>
+        <div class="flags-div">
+          <h4>Flags Left</h4>
+          <hr />
+          <ul class="flags-left"></ul>
+        </div>
+
+        <div id="result"></div>
+      </div>
+      <div id="game_board" class="game_board"></div>
+    </div>
+    <div id="gameover" class="gameover">
+      <h4>Game Over!</h4>
+      <button onclick=" location.reload()">Restart</button>
+    </div>
+
+    <div id="victory" class="gameover">
+      <h4>Victory!</h4>
+      <button onclick=" location.reload()">Play Again</button>
+    </div>
+    <script src="minesweeper.js"></script>
+  </body>
+</html>
